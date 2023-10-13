@@ -1,0 +1,104 @@
+.ul {
+    list-style: none;
+    display: grid;
+    grid-template-rows: auto;
+    grid-gap: 4px;
+    padding: 1em;
+    @media screen and (min-width: 848px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    @media screen and (max-width: 847px) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media screen and (max-width: 657px) {
+        grid-template-columns: 1fr 1fr;
+    }
+    @media screen and (max-width: 451px) {
+        grid-template-columns: 1fr;
+        padding-left: 40px;
+    }
+}
+.dropdown-btn {
+    padding: 8px 12px;
+    background-color: transparent;
+    border: 1px solid rgb(229, 229, 229);
+    color: rgb(155, 155, 155);
+}
+.AtoZ-button {
+    padding: 5px 12px;
+    background-color: transparent;
+    border: 1px solid rgb(229, 229, 229);
+    color: rgb(155, 155, 155);
+    font-size: 20px;
+}
+.AtoZ-button:hover {
+    color: black;
+}
+.dropdown-btn:hover {
+    color: black;
+}
+button span {
+    margin: 0 8px
+}
+.search {
+    display: flex;
+    justify-content: right;
+    margin-right: 12px;
+    & input:focus {
+        outline: none;
+    }
+}
+.search-content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    background-color: #F2F3F3;
+    padding: 0 12px;
+    & input {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        line-height: 2rem;
+        font-size: 12px;
+    }
+}
+.header {
+    display: flex;
+    justify-content: right;
+}
+@media screen and ( max-width: 446px) {
+    .header {
+        flex-direction: column;
+    }
+    .search {
+        height: 42px;
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+}
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid blue;
+    border-bottom: 16px solid blue;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

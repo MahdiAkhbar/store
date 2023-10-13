@@ -1,0 +1,36 @@
+<div class="container-fluid header">
+    <div class="row g-0" style="line-height: 64px;">
+        <div class="col about-you">
+            <a [routerLink]="['/']">
+                <span class="about">ABOUT</span>
+                <span class="you">YOU</span>
+            </a>
+        </div>
+        <div class="col d-flex justify-content-end">
+            <div class="me-3">
+                <a [routerLink]="['/signup']" title="Login">
+                    <i class="bi bi-person"></i>
+                    <span class="icon">SignUp</span>
+                </a>
+            </div>
+            <div class="me-3">
+                <a [routerLink]="['/whishlist']" title="Whishlist">
+                    <i class="bi bi-heart"></i>
+                    <span *ngIf="!whishlistIsEmpty" class="badge bg-danger rounded-circle p-1">
+                        <span class="visually-hidden">badge</span>
+                    </span>
+                    <span class="icon">Whishlist</span>
+                </a>
+            </div>
+            <div class="me-3">
+                <a [routerLink]="['/basket']" title="Basket">
+                    <i class="bi bi-cart"></i>
+                    <span *ngIf="!basketIsEmpty" class="badge bg-danger rounded-circle p-1">
+                        <span class="visually-hidden">badge</span>
+                    </span>
+                    <span class="icon">Basket</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <div class="row g-0">
+        <div class="co-xs-12">
+            <h2>Whishlist</h2>
+        </div>
+    </div>
+    <div class="row g-0 p-3 justify-content-center">
+        <div *ngIf="orders.length < 1; else orderstemplate" class="col-5 p-5 orders-section">
+            <div>
+                <p class="m-0 empty">Your basket is empty!</p>
+                <p class=" hint">Add products or login</p>
+            </div>
+            <div class="d-flex justify-content-around">
+                <button class="buttons" type="button" [routerLink]="['/']">Buy</button>
+                <button class="buttons" type="button" [routerLink]="['/login']">Login</button>
+            </div>
+        </div>
+        <ng-template #orderstemplate>
+            <ul class="ul">
+                <li *ngFor="let product of orders">
+                    <a>
+                        <div class="row g-0">
+                            <div class="col-xs">
+                                <div class="col whishlist-body">
+                                    <div class="whishlist d-flex" (click)="remove(product)" role="button">
+                                        <i style="font-size: 20px;" class="bi bi-trash"></i>
+                                        <div class="add-to-whishlist d-flex">Remove from whishlist</div>
+                                    </div>
+                                </div>
+                                <div class="col product-image">
+                                    <div>
+                                        <img [src]="product.imagePath">
+                                    </div>
+                                </div>
+                                <div class="col" style="position: relative;">
+                                    <div class="info">
+                                        <p>{{ product.name }}</p>
+                                        <p>{{ product.price }}</p>
+                                    </div>
+                                    <div class="col text-center">
+                                        <div class="add-section">
+                                            <button (click)="onAddToBasket(product)" class="add-button"
+                                                type="button">Add to basket</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </ng-template>
+    </div>
+</div>

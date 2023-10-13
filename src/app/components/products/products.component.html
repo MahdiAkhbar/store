@@ -1,0 +1,56 @@
+<div class="row g-0">
+    <div class="col-xs-12">
+      <div class="header px-3">
+        <div class="search">
+          <div class="search-content">
+            <i class="bi bi-search me-1"></i>
+            <input type="text" [(ngModel)]="searchValue" placeholder="Search for items">
+          </div>
+        </div>
+        <div class="d-flex justify-content-end">
+          <div class="dropdown pe-3" appDropdown>
+            <button #dropdownBtn type="button" class="dropdown-toggle dropdown-btn">
+              <i class="bi bi-arrow-down-up"></i>
+              <span>Sort</span>
+            </button>
+            <ul #menu class="dropdown-menu mt-1" style="right: 0;">
+              <li>
+                <button 
+                  class="dropdown-item" 
+                  type="button"
+                  (click)="sortPar('name')">Name</button>
+              </li>
+              <li>
+                <button 
+                  class="dropdown-item" 
+                  type="button"
+                  (click)="sortPar('price')">Price</button>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <button *ngIf="!alphabetArg" type="button" class="AtoZ-button" (click)="onAlphabet(true)">
+              <i class="bi bi-sort-alpha-down"></i>
+            </button>
+            <button *ngIf="alphabetArg" type="button" class="AtoZ-button" (click)="onAlphabet(false)">
+              <i class="bi bi-sort-alpha-down-alt"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="isFetching; else productsTemplate">
+        <div class="loading">
+          <div class="loader">
+            <!-- Loading... -->
+          </div>
+        </div>
+      </div>
+      <ng-template #productsTemplate>
+        <ul class="ul">
+          <app-product-item 
+            [product]="product"
+            *ngFor="let product of products | search:searchValue | sort:sortArg | alphabetically:alphabetArg"></app-product-item>
+        </ul>
+      </ng-template>
+    </div>
+  </div>

@@ -1,0 +1,62 @@
+<div class="container mb-3">
+    <div class="row justify-content-center">
+        <div class="col-6 signup-form">
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                <div class="form-group mb-3">
+                    <label for="name">Name</label>
+                    <input 
+                        id="name"
+                        type="text" 
+                        class="form-control mb-1"
+                        formControlName="name"
+                        >
+                    <div class="invalid-value" *ngIf="!signupForm.controls['name'].valid && signupForm.controls['name'].touched">Please Enter your name</div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="lname">Last Name</label>
+                    <input 
+                        id="lname"
+                        type="text" 
+                        class="form-control mb-1"
+                        formControlName="lastName"
+                        >
+                    <div class="invalid-value" *ngIf="!signupForm.controls['name'].valid && signupForm.controls['name'].touched">Please Enter your name</div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="email">Email</label>
+                    <input 
+                        id="email"
+                        type="text" 
+                        class="form-control"
+                        formControlName="email">
+                    <div class="invalid-value" *ngIf="(signupForm.controls['email'].value === null || signupForm.controls['email'].value === '') && signupForm.controls['email'].touched; else notCorrect">Please Enter your Email!</div>
+                    <ng-template #notCorrect>
+                        <div class="invalid-value" *ngIf="!signupForm.controls['email'].valid && signupForm.controls['email'].touched">This email is not correct!</div>
+                    </ng-template>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="password">Password</label>
+                    <input 
+                        id="password"
+                        type="password" 
+                        class="form-control"
+                        formControlName="password">
+                        <div class="invalid-value" *ngIf="!signupForm.controls['password'].valid && signupForm.controls['password'].touched">Please enter atleast 6 charachter</div>
+                    </div>
+                <br>
+                <div class="d-flex justify-content-center">
+                    <div>
+                        <button 
+                            type="submit" 
+                            class="btn btn-success"
+                            [disabled]="!signupForm.valid">SignUp
+                        </button>
+                        <div>
+                            <a [routerLink]="['/login']">If you already have an account, login</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<li>
+  <a>
+    <div class="row g-0">
+      <div class="col-lg-12">
+        <div class="col whishlist-body">
+          <div class="whishlist d-flex" (click)="onAddToWhishlist(product)" role="button">
+              <i style="font-size: 20px;" class="bi bi-heart"></i>
+              <div class="add-to-whishlist d-flex">Add to Whishlist</div>
+          </div>
+        </div>
+        <div class="col product-image">
+            <div style="display: flex;justify-content: center;">
+                <img [src]="product.imagePath">
+            </div>
+        </div>
+        <div class="col" style="position: relative;">
+          <div class="info">
+            <p>{{ product.name }}</p>
+            <p>{{ product.price }}</p>
+          </div>
+          <div class="col text-center">
+            <div class="add-section">
+              <button 
+                (click)="onAddToBasket(product)" 
+                class="add-button"
+                type="button">Add to basket</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+</li>

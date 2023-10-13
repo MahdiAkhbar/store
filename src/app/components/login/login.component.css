@@ -1,0 +1,20 @@
+.signup-form {
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 20px;
+    padding: 30px;
+}
+input.ng-invalid.ng-touched {
+    border-color: red;
+}
+input.ng-valid {
+    border-color: lawngreen;
+}
+.invalid-value {
+    margin-top: 5px;
+    width: fit-content;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background-color: orange;
+    padding: 10px;
+    font-size: small;
+}

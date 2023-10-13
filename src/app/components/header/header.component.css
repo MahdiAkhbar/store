@@ -1,0 +1,44 @@
+.about {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    /* font-size: 3.2vw; */
+}
+.you {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    margin-left: 2px;
+    /* font-size: 3.2vw; */
+}
+.ul {
+    list-style: none;
+    & li {
+        display: inline;
+    }
+}
+span.icon {
+    font-size: 14px;
+    margin-left: 6px;
+}
+@media screen and (max-width: 570px) {
+    .icon {
+        display: none;
+    }
+}
+@media screen and (min-width: 571px) {
+    .about-you {
+        padding-left: 15px;
+    }
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+.header {
+    padding: 0;
+    border-bottom: 1px solid rgb(242, 242, 242);
+    /* box-shadow: 0 5px 5px rgb(229, 229,229); */
+}

@@ -1,0 +1,53 @@
+<div class="container my-3">
+    <form #f="ngForm" (ngSubmit)="onSend(f)">
+        <div class="form-group mb-3">
+            <label for="name">Name</label>
+            <input 
+                type="text" 
+                id="name"
+                class="form-control"
+                name="name"
+                ngModel
+                required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="price">Price</label>
+            <input 
+                type="text"
+                id="price" 
+                class="form-control"
+                name="price"
+                ngModel
+                required>
+        </div>
+        <div class="form-check mb-3">
+            <input 
+                type="checkbox" 
+                id="available"
+                class="form-check-input"
+                name="available"
+                [ngModel]="false">
+            <label for="available" class="form-check-label">Available</label>
+        </div>
+        <div class="form-group mb-3">
+            <label for="image">Image</label>
+            <input 
+                type="text" 
+                id="image"
+                class="form-control"
+                name="imagePath"
+                ngModel
+                required>
+        </div>
+        <button 
+            type="submit" 
+            class="btn btn-primary" 
+            (click)="onSend"
+            [disabled]="!f.valid">Create Product</button>
+    </form>
+</div>
+<div class="success">
+    <div #success class="success-message">
+        Product created successfully
+    </div>
+</div>

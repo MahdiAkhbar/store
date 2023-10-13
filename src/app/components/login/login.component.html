@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6 signup-form">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group mb-3">
+                    <label for="name">Name</label>
+                    <input 
+                        id="name"
+                        type="text" 
+                        class="form-control mb-1"
+                        formControlName="name"
+                        >
+                    <div class="invalid-value" *ngIf="!loginForm.controls['name'].valid && loginForm.controls['name'].touched">Please Enter your name</div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="password">Password</label>
+                    <input 
+                        id="password"
+                        type="password" 
+                        class="form-control"
+                        formControlName="password">
+                        <div class="invalid-value" *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">Please enter atleast 6 charachter</div>
+                    </div>
+                <br>
+                <div class="d-flex justify-content-center">
+                    <button 
+                        type="submit" 
+                        class="btn btn-success"
+                        [disabled]="!loginForm.valid">login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <button [routerLink]="['/form']" class="btn btn-primary">Create product</button>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-5">
+            <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+                <div class="form-gorup mb=3">
+                    <label for="name">Username</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        class="form-control"
+                        name="name"
+                        ngModel
+                        required>
+                </div>
+                <div class="form-gorup mb-3">
+                    <label for="password">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        class="form-control"
+                        name="password"
+                        ngModel
+                        required>
+                </div>
+                <div class="form-check mb-3">
+                    <input 
+                        type="checkbox" 
+                        id="isadmin"
+                        class="form-check-input"
+                        name="isAdmin"
+                        [ngModel]="false">
+                    <label for="isadmin">Admin</label>
+                </div>
+                <button 
+                    type="submit" 
+                    class="btn btn-primary mb-3"
+                    [disabled]="!f.valid">Create User</button>
+            </form>
+        </div>
+    </div>
+</div>

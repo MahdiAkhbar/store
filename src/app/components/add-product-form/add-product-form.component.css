@@ -1,0 +1,19 @@
+.success {
+    display: flex;
+    overflow: hidden;
+    position: absolute;
+    /* right: -242.84px; */
+    right: 0;
+    top: 100px;
+}
+.success-message {
+    position: relative;
+    padding: 15px;
+    left: 242.84px;
+    background-color: rgb(107, 241, 107);
+    color: rgb(0, 126, 0);
+    transition: 500ms;
+}
+.on-success {
+    left: 0;
+}
