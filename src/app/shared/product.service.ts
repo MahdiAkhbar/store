@@ -12,11 +12,13 @@ export class ProductService {
   storeProduct(product: Product) {
     return this.http.post<Product>(
       'https://store-shop-2bb1e-default-rtdb.firebaseio.com/products.json',
+      // 'http://localhost:3000/products',
       product
     )
   }
   fetchProducts() {
     return this.http.get<Product[]>('https://store-shop-2bb1e-default-rtdb.firebaseio.com/products.json')
+    // return this.http.get<Product[]>('http://localhost:3000/products')
     .pipe(
       map((response) => {
         const productList: Product[] = [];

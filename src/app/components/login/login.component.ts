@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/shared/auth.service';
+
 import { User } from 'src/app/shared/user.model';
+import { UsersService } from 'src/app/shared/users.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { User } from 'src/app/shared/user.model';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private usersService: UsersService) {}
 
   loginForm!: FormGroup;
 
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
   onSubmit() {
     let user: User = this.loginForm.value
-    this.authService.login(user);
+    this.usersService.login(user);
     this.router.navigate(['/profile']);
     this.loginForm.reset();
   }

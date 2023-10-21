@@ -37,10 +37,10 @@ export class BasketComponent implements OnInit {
   // ];
 
   ngOnInit(): void {
-    this.productService.fetchProducts()
-    .subscribe((products) => {
-      this.products = products;
-    });
+    // this.productService.fetchProducts()
+    // .subscribe((products) => {
+    //   this.products = products;
+    // });
 
     this.orders = this.ordersService.getBasketOrders();
     this.orders.forEach((order) => {
@@ -54,7 +54,9 @@ export class BasketComponent implements OnInit {
   }
 
   increase(order: Product) {
+    // let index = this.orders.indexOf(<Product>this.orders.find(o => o === order));
     let product = this.findIndex(this.orders, order);
+    // let product = this.orders[index];
     product.count += 1;
     this.totalPrice += +order.price
   }
@@ -64,8 +66,8 @@ export class BasketComponent implements OnInit {
     this.totalPrice -= +order.price;
   }
   findIndex(array: Product[], order: Product) {
-    let index = this.orders.indexOf(<Product>this.orders.find(o => o.id === order.id));
-    let product = this.orders[index];
+    let index = array.indexOf(<Product>this.orders.find(o => o.id === order.id));
+    let product = array[index];
     return product;
   }
 }

@@ -15,7 +15,13 @@ export class OrdersService {
   whishlistIsEmpty = new Subject<boolean>();
 
   addToBasket(order: Product) {
-    this.basketList.push(order);
+    if (this.basketList.includes(order)) {
+      let index = this.basketList.indexOf(order);
+      this.basketList[index].count += 1;
+    }
+    else {
+      this.basketList.push(order);
+    }
     this.basketIsEmpty.next(false);
   }
   removeFromBasket(order: Product) {

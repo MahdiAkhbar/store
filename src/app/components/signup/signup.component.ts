@@ -1,9 +1,13 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
+import { Product } from 'src/app/shared/product.model';
+import { ProductService } from 'src/app/shared/product.service';
 
 import { User } from 'src/app/shared/user.model';
+import { UsersService } from 'src/app/shared/users.service';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +15,10 @@ import { User } from 'src/app/shared/user.model';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private usersService: UsersService,
+    private http: HttpClient,
+    private productService: ProductService) {}
 
   signupForm!: FormGroup;
 
@@ -25,8 +32,8 @@ export class SignupComponent implements OnInit {
   }
   onSubmit() {
     let user: User = this.signupForm.value
-    this.authService.signup(user);
-    this.router.navigate(['/profile']);
+    this.usersService.signup(user);
+    // this.router.navigate(['/profile']);
     this.signupForm.reset();
   }
   minlength(control: FormControl): { [s: string]: boolean } | null {
@@ -36,4 +43,41 @@ export class SignupComponent implements OnInit {
       return { 'minLength': true };
     return null;
   }
+  // getUsers() {
+  // fetch('http://localhost:3000/users')
+  // .then(users => users.json())
+  // .then(users => console.log(users))
+  // .catch((err) => {
+  //   console.log('errore : ' + err.message);
+  // })
+  // }
+  // createUser() {
+  //   let user: User = {
+  //     name: 'user2',
+  //     lastName: 'user2lastname',
+  //     email: 'user2@user2.com',
+  //     password: '12345678'
+  //   };
+  //   this.http.post('http://localhost:3000/users', user).subscribe(() => {
+  //     console.log('user created successfully');
+  //   })
+  // }
+  // createProduct() {
+  //   let product: Product = {
+  //     id: 'fgj',
+  //     imagePath: 'https://cdn.aboutstatic.com/file/images/457f217bf7c0e895e95774d7249c766b.jpg?quality=75&height=480&width=360',
+  //     name: 'only & sons',
+  //     available: true,
+  //     price: 47,
+  //     count: 1
+  //   };
+  //   this.http.post('http://localhost:3000/products', product).subscribe((value) => {
+  //     console.log('added successfully' + value);
+      
+  //   });
+  // }
+  // getprod() {
+  //   // this.http.get('http://localhost:3000/products').subscribe(data => console.log(data));
+  //   this.productService.fetchProducts().subscribe(data => console.log(data))
+  // }
 }

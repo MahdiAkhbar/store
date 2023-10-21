@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdersService } from 'src/app/shared/orders.service';
+import { UsersService } from 'src/app/shared/users.service';
 
 @Component({
   selector: 'app-header',
@@ -7,12 +8,14 @@ import { OrdersService } from 'src/app/shared/orders.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private ordersService: OrdersService) {}
+  constructor(private ordersService: OrdersService, private usersService: UsersService) {}
 
   basketIsEmpty: boolean = true;
   whishlistIsEmpty: boolean = true;
+  loggedIn: boolean = false;
 
   ngOnInit(): void {
+    this.usersService.loggedIn.subscribe(value => this.loggedIn = value);
     // this.basketIsEmpty = this.ordersService.getBasketArrayLength()
     this.ordersService.basketIsEmpty.subscribe(value => this.basketIsEmpty = value);
     this.ordersService.whishlistIsEmpty.subscribe(value => this.whishlistIsEmpty = value);
