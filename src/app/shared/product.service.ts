@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable} from '@angular/core';
+import { Inject, Injectable} from '@angular/core';
 import { Product } from './product.model';
 import { map } from 'rxjs';
 
@@ -7,18 +7,18 @@ import { map } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, @Inject('API_URL') private url: string) { }
 
   storeProduct(product: Product) {
     return this.http.post<Product>(
-      'https://store-shop-2bb1e-default-rtdb.firebaseio.com/products.json',
-      // 'http://localhost:3000/products',
+      this.url + '/products.json',
+      // this.localUrl + '/products',
       product
     )
   }
   fetchProducts() {
-    return this.http.get<Product[]>('https://store-shop-2bb1e-default-rtdb.firebaseio.com/products.json')
-    // return this.http.get<Product[]>('http://localhost:3000/products')
+    return this.http.get<Product[]>(this.url + '/products.json')
+    // return this.http.get<Product[]>(this.localUrl + '/products')
     .pipe(
       map((response) => {
         const productList: Product[] = [];

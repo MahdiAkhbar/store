@@ -8,7 +8,7 @@ import { UsersService } from './users.service';
   providedIn: 'root'
 })
 export class AuthService implements OnInit{
-  constructor(private router: Router) { }
+  constructor(private router: Router, @Inject('API_URL') private url: string) { }
   
   usersService = Inject(UsersService);
   isLoggedIn: boolean = false;
@@ -21,8 +21,8 @@ export class AuthService implements OnInit{
   isAdmin() {
     const user = this.usersService.user;
     let promise = new Promise((resolve) => {
-      fetch('https://store-shop-2bb1e-default-rtdb.firebaseio.com/users.json')
-      // fetch('https://localhost:3000/users')
+      fetch(this.url + '/users.json')
+      // fetch(this.localUrl + '/users')
       .then(response => response.json())
       .then((users) => {
         let usersList = [];

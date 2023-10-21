@@ -45,7 +45,9 @@ import { SignupComponent } from './components/signup/signup.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: 'API_URL', useValue: 'https://store-shop-2bb1e-default-rtdb.firebaseio.com' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Subject, map } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -12,7 +12,8 @@ export class UsersService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    @Inject('API_URL') private url:string
     ) { }
 
   user!: User;
@@ -20,17 +21,17 @@ export class UsersService {
 
 
   createUser(user: User) {
-    return this.http.post<User>('https://store-shop-2bb1e-default-rtdb.firebaseio.com/users.json', user);
-    // return this.http.post<User>('http://localhost:3000/users', user);
+    return this.http.post<User>(this.url + '/users.json', user);
+    // return this.http.post<User>(this.localUrl + '/users', user);
   }
   getUser() {
-    return this.http.get<User[]>('https://store-shop-2bb1e-default-rtdb.firebaseio.com/users.json')
-    // return this.http.get<User[]>('http://localhost:3000/users')
+    return this.http.get<User[]>(this.url + '/users.json')
+    // return this.http.get<User[]>(this.localUrl + '/users')
   }
   signup(user: User) {
     this.loggedIn.next(true);
-    this.http.post<User>('https://store-shop-2bb1e-default-rtdb.firebaseio.com/users.json', user)
-    // this.http.post<User>('http://localhost:3000/users', user)
+    this.http.post<User>(this.url + '/users.json', user)
+    // this.http.post<User>(this.localUrl + '/users', user)
     .subscribe((user) => {      
       this.user = user;
       this.router.navigate(['/profile']);
