@@ -16,7 +16,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.usersService.loggedIn.subscribe(value => this.loggedIn = value);
-    // this.basketIsEmpty = this.ordersService.getBasketArrayLength()
     this.ordersService.basketIsEmpty.subscribe(value => this.basketIsEmpty = value);
     this.ordersService.whishlistIsEmpty.subscribe(value => this.whishlistIsEmpty = value);
   }

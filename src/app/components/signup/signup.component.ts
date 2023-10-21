@@ -76,8 +76,8 @@ export class SignupComponent implements OnInit {
       
   //   });
   // }
-  // getprod() {
-  //   // this.http.get('http://localhost:3000/products').subscribe(data => console.log(data));
-  //   this.productService.fetchProducts().subscribe(data => console.log(data))
-  // }
+  getprod() {
+    this.http.get('/products').subscribe(data => console.log(data));
+    // this.productService.fetchProducts().subscribe(data => console.log(data))
+  }
 }

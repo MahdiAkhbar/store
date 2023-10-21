@@ -1,7 +1,12 @@
-import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { 
+  ActivatedRouteSnapshot,
+  CanActivateFn,
+  Router,
+  RouterStateSnapshot,
+  UrlTree
+} from '@angular/router';
 import { Injectable, inject } from '@angular/core';
 import { AuthService } from './auth.service';
-import { User } from './user.model';
 
 @Injectable({ providedIn: 'root'})
 class AdminGaurd {
