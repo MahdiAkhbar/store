@@ -8,9 +8,11 @@ import { UsersService } from './users.service';
   providedIn: 'root'
 })
 export class AuthService implements OnInit{
-  constructor(private router: Router, @Inject('API_URL') private url: string) { }
+  constructor(
+    private router: Router,
+    @Inject('API_URL') private url: string,
+    private usersService: UsersService) { }
   
-  usersService = Inject(UsersService);
   isLoggedIn: boolean = false;
 
   ngOnInit(): void {
@@ -19,6 +21,7 @@ export class AuthService implements OnInit{
     })
   }
   isAdmin() {
+    // const user = this.usersService.user;
     const user = this.usersService.user;
     let promise = new Promise((resolve) => {
       fetch(this.url + '/users.json')

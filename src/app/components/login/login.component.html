@@ -1,8 +1,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-6 signup-form">
+            <div #failLogin class="normal fail-login mb-2">
+                <p class="fail-message">Username or Password is wrong!</p>
+            </div>
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                <div class="form-group mb-3">
+                <!-- <div class="form-group mb-3">
                     <label for="name">Name</label>
                     <input 
                         id="name"
@@ -10,7 +13,19 @@
                         class="form-control mb-1"
                         formControlName="name"
                         >
-                    <div class="invalid-value" *ngIf="!loginForm.controls['name'].valid && loginForm.controls['name'].touched">Please Enter your name</div>
+                    <div class="invalid-value" *ngIf="!loginForm.controls['email'].valid && loginForm.controls['email'].touched">Please Enter your Email</div>
+                </div> -->
+                <div class="form-group mb-3">
+                    <label for="email">Email</label>
+                    <input 
+                        id="email"
+                        type="text" 
+                        class="form-control"
+                        formControlName="email">
+                    <div class="invalid-value" *ngIf="(loginForm.controls['email'].value === null || loginForm.controls['email'].value === '') && loginForm.controls['email'].touched; else notCorrect">Please Enter your Email!</div>
+                    <ng-template #notCorrect>
+                        <div class="invalid-value" *ngIf="!loginForm.controls['email'].valid && loginForm.controls['email'].touched">This email is not correct!</div>
+                    </ng-template>
                 </div>
                 <div class="form-group mb-3">
                     <label for="password">Password</label>

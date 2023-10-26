@@ -31,9 +31,8 @@ export class SignupComponent implements OnInit {
     });
   }
   onSubmit() {
-    let user: User = this.signupForm.value
+    let user: User = {...this.signupForm.value};
     this.usersService.signup(user);
-    // this.router.navigate(['/profile']);
     this.signupForm.reset();
   }
   minlength(control: FormControl): { [s: string]: boolean } | null {
@@ -43,14 +42,19 @@ export class SignupComponent implements OnInit {
       return { 'minLength': true };
     return null;
   }
-  // getUsers() {
-  // fetch('http://localhost:3000/users')
-  // .then(users => users.json())
-  // .then(users => console.log(users))
-  // .catch((err) => {
-  //   console.log('errore : ' + err.message);
-  // })
-  // }
+
+
+
+
+
+  getUsers() {
+  fetch('https://store-shop-2bb1e-default-rtdb.firebaseio.com/users.json')
+  .then(users => users.json())
+  .then(users => console.log(users))
+  .catch((err) => {
+    console.log('errore : ' + err.message);
+  })
+  }
   // createUser() {
   //   let user: User = {
   //     name: 'user2',
@@ -77,7 +81,6 @@ export class SignupComponent implements OnInit {
   //   });
   // }
   getprod() {
-    this.http.get('/products').subscribe(data => console.log(data));
-    // this.productService.fetchProducts().subscribe(data => console.log(data))
+    console.log(this.usersService.getLoginStatus());
   }
 }

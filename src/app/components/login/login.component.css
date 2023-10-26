@@ -18,3 +18,18 @@ input.ng-valid {
     padding: 10px;
     font-size: small;
 }
+.fail-login {
+    display: block;
+    color: #ff0000;
+    border: 1px solid #ff0000;
+    border-radius: 10px;
+}
+.fail-message {
+    margin: 0;
+    line-height: 40px;
+    text-align: center;
+    vertical-align: middle;
+}
+.normal {
+    display: none;
+}

@@ -20,7 +20,7 @@
                         class="form-control mb-1"
                         formControlName="lastName"
                         >
-                    <div class="invalid-value" *ngIf="!signupForm.controls['name'].valid && signupForm.controls['name'].touched">Please Enter your name</div>
+                    <div class="invalid-value" *ngIf="!signupForm.controls['lastName'].valid && signupForm.controls['lastName'].touched">Please Enter your last name</div>
                 </div>
                 <div class="form-group mb-3">
                     <label for="email">Email</label>
@@ -60,10 +60,14 @@
         </div>
     </div>
 </div>
-<!-- <hr>
-<button type="button" (click)="createUser()">create user</button>
+
+
+
+
+
+<hr>
+<!-- <button type="button" (click)="createUser()">create user</button> -->
 <button type="button" (click)="getUsers()">get users</button>
-<button type="button" (click)="createProduct()">create product</button>
-<button type="button" (click)="getprod()">get prod</button>
-<p id="test">hi</p> -->
+<!-- <button type="button" (click)="createProduct()">create product</button> -->
+<!-- <button type="button" (click)="getprod()">get prod</button> -->
 <button type="button" (click)="getprod()">get prod</button>
