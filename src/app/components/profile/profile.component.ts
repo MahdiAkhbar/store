@@ -12,19 +12,12 @@ import { UsersService } from 'src/app/shared/users.service';
 export class ProfileComponent implements OnInit {
   constructor(private usersService: UsersService) {}
 
-  user!: User;
   loggedInUser!: User;
+  loginStatus: boolean = false;
 
   ngOnInit(): void {
     this.loggedInUser = this.usersService.user;
-  }
-  onSubmit(form: NgForm) {
-    this.user = form.value;    
-    this.usersService.createUser(this.user)
-    .subscribe(() => {
-      console.log('User', this.user, 'successfully created');
-      form.reset();
-    })
+    this.loginStatus = this.usersService.getLoginStatus();
   }
   logout() {
     this.usersService.logout();
