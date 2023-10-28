@@ -1,9 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/shared/auth.service';
-import { Product } from 'src/app/shared/product.model';
 import { ProductService } from 'src/app/shared/product.service';
 
 import { User } from 'src/app/shared/user.model';
@@ -15,10 +12,7 @@ import { UsersService } from 'src/app/shared/users.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  constructor(
-    private usersService: UsersService,
-    private http: HttpClient,
-    private productService: ProductService) {}
+  constructor(private usersService: UsersService) {}
 
   signupForm!: FormGroup;
 
@@ -42,11 +36,6 @@ export class SignupComponent implements OnInit {
       return { 'minLength': true };
     return null;
   }
-
-
-
-
-
   getUsers() {
   fetch('https://store-shop-2bb1e-default-rtdb.firebaseio.com/users.json')
   .then(users => users.json())

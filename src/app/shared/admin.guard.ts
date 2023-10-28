@@ -18,7 +18,8 @@ class AdminGaurd {
       if (isAdmin)
         return true;
       else
-        return this.router.createUrlTree(['/']);
+        return false
+        // return this.router.createUrlTree(['/']);
     })
   }
 }
