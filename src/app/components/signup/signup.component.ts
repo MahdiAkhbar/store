@@ -55,32 +55,4 @@ export class SignupComponent implements OnInit {
     console.log('errore : ' + err.message);
   })
   }
-  // createUser() {
-  //   let user: User = {
-  //     name: 'user2',
-  //     lastName: 'user2lastname',
-  //     email: 'user2@user2.com',
-  //     password: '12345678'
-  //   };
-  //   this.http.post('http://localhost:3000/users', user).subscribe(() => {
-  //     console.log('user created successfully');
-  //   })
-  // }
-  // createProduct() {
-  //   let product: Product = {
-  //     id: 'fgj',
-  //     imagePath: 'https://cdn.aboutstatic.com/file/images/457f217bf7c0e895e95774d7249c766b.jpg?quality=75&height=480&width=360',
-  //     name: 'only & sons',
-  //     available: true,
-  //     price: 47,
-  //     count: 1
-  //   };
-  //   this.http.post('http://localhost:3000/products', product).subscribe((value) => {
-  //     console.log('added successfully' + value);
-      
-  //   });
-  // }
-  getprod() {
-    console.log(this.usersService.getLoginStatus());
-  }
 }
