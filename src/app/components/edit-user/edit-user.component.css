@@ -1,0 +1,24 @@
+label {
+    width: 150px;
+}
+.fetch-email-error {
+    color: #ff0000;
+    width: 300px;
+    line-height: 40px;
+    border: 1px solid #ff0000;
+    border-radius: 13px;
+    text-align: center;
+    vertical-align: middle;
+}
+.not-registerd {
+    display: none;
+}
+.fetch-email {
+    width: 300px;
+    font-weight: 400;
+    font-size: 1rem;
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 8px;
+}

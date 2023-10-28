@@ -19,6 +19,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { SearchPipe } from './shared/search.pipe';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { SignupComponent } from './components/signup/signup.component';
     DropdownDirective,
     SearchPipe,
     ProfileComponent,
-    SignupComponent
+    SignupComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

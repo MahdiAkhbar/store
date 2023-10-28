@@ -9,7 +9,7 @@ import { BasketComponent } from './components/basket/basket.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { adminGuard } from './shared/admin.guard';
 import { SignupComponent } from './components/signup/signup.component';
-import { authGuard } from './shared/profile-auth.guard';
+import { authGuard } from './shared/auth.guard';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 const routes: Routes = [
