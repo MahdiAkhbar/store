@@ -21,11 +21,9 @@ export class AuthService implements OnInit{
     })
   }
   isAdmin() {
-    // const user = this.usersService.user;
     const user = this.usersService.user;
     let promise = new Promise((resolve) => {
       fetch(this.url + '/users.json')
-      // fetch(this.localUrl + '/users')
       .then(response => response.json())
       .then((users) => {
         let usersList = [];
@@ -46,9 +44,4 @@ export class AuthService implements OnInit{
   isLogedIn() {
     return this.isLoggedIn;
   }
-
-
-
-
-
 }

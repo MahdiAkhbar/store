@@ -23,6 +23,6 @@ class AdminGaurd {
   }
 }
 
-export const adminAuthGuard: CanActivateFn = (route, state) => {
+export const adminGuard: CanActivateFn = (route, state) => {
   return inject(AdminGaurd).canActivate(route, state);
 }
