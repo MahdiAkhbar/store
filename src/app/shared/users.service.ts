@@ -23,8 +23,8 @@ export class UsersService {
   loginStatus: boolean = false;
 
 
-  createUser(user: User) {
-    return this.http.post<User>(this.url + '/users.json', user);
+  editUser(user: User) {
+    return this.http.patch<User>(this.url + '/users/' + user.id + '.json', user);
   }
   getUser() {
     return this.http.get<User[]>(this.url + '/users.json')
@@ -32,7 +32,7 @@ export class UsersService {
       map((response) => {
         let userslist = [];
         for (let key in response) {
-          userslist.push({ ...response[key] });
+          userslist.push({ ...response[key], id: key });
         }
         return userslist;
       })
