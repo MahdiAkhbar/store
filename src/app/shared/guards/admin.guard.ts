@@ -6,7 +6,7 @@ import {
   UrlTree
 } from '@angular/router';
 import { Injectable, inject } from '@angular/core';
-import { AuthService } from './auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({ providedIn: 'root'})
 class AdminGaurd {

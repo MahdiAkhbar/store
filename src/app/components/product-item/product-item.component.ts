@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
-import { OrdersService } from 'src/app/shared/orders.service';
-import { Product } from 'src/app/shared/product.model';
+import { OrdersService } from 'src/app/shared/services/orders.service';
+import { Product } from 'src/app/shared/models/product.model';
 
 @Component({
   selector: 'app-product-item',

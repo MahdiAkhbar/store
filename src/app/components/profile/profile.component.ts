@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { User } from 'src/app/shared/user.model';
-import { UsersService } from 'src/app/shared/users.service';
+import { User } from 'src/app/shared/models/user.model';
+import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
   selector: 'app-profile',

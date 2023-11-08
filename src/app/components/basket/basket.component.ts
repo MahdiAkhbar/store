@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { OrdersService } from 'src/app/shared/orders.service';
+import { OrdersService } from 'src/app/shared/services/orders.service';
 
-import { Product } from 'src/app/shared/product.model';
-import { ProductService } from 'src/app/shared/product.service';
+import { Product } from 'src/app/shared/models/product.model';
+import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
   selector: 'app-basket',

@@ -7,9 +7,9 @@ import { WhishlistComponent } from './components/whishlist/whishlist.component';
 import { LoginComponent } from './components/login/login.component';
 import { BasketComponent } from './components/basket/basket.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { adminGuard } from './shared/admin.guard';
+import { adminGuard } from './shared/guards/admin.guard';
 import { SignupComponent } from './components/signup/signup.component';
-import { authGuard } from './shared/auth.guard';
+import { authGuard } from './shared/guards/auth.guard';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 const routes: Routes = [

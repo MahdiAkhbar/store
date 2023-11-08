@@ -1,7 +1,7 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Product } from 'src/app/shared/product.model';
-import { ProductService } from 'src/app/shared/product.service';
+import { Product } from 'src/app/shared/models/product.model';
+import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
   selector: 'app-add-product-form',

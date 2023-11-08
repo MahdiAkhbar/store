@@ -1,10 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ProductService } from 'src/app/shared/product.service';
 
-import { User } from 'src/app/shared/user.model';
-import { UsersService } from 'src/app/shared/users.service';
+import { User } from 'src/app/shared/models/user.model';
+import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
   selector: 'app-signup',

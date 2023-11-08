@@ -1,7 +1,7 @@
 import { Inject, Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { User } from './user.model';
+import { User } from '../models/user.model';
 import { UsersService } from './users.service';
 
 @Injectable({

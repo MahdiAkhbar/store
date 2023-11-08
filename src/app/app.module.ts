@@ -13,10 +13,10 @@ import { ProductItemComponent } from './components/product-item/product-item.com
 import { LoginComponent } from './components/login/login.component';
 import { WhishlistComponent } from './components/whishlist/whishlist.component';
 import { BasketComponent } from './components/basket/basket.component';
-import { SortPipe } from './shared/sort.pipe';
-import { AlphabeticallyPipe } from './shared/alphabetically.pipe';
-import { DropdownDirective } from './shared/dropdown.directive';
-import { SearchPipe } from './shared/search.pipe';
+import { SortPipe } from './shared/pipes/sort.pipe';
+import { AlphabeticallyPipe } from './shared/pipes/alphabetically.pipe';
+import { DropdownDirective } from './shared/directives/dropdown.directive';
+import { SearchPipe } from './shared/pipes/search.pipe';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';

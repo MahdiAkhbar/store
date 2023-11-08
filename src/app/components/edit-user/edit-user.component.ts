@@ -7,8 +7,8 @@ import {
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { UsersService } from 'src/app/shared/users.service';
-import { User } from 'src/app/shared/user.model';
+import { UsersService } from 'src/app/shared/services/users.service';
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-edit-user',
