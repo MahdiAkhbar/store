@@ -18,7 +18,7 @@ export class AddProductFormComponent {
   @ViewChild('success', { static: true }) success!: ElementRef<HTMLDivElement>;
   
   onSend(form: NgForm) {
-    this.productInfo = form.value;
+    this.productInfo = {...form.value, count: 1};
     this.productService.storeProduct(this.productInfo).subscribe(() => {
       this.r2.addClass(this.success.nativeElement, 'on-success');
       setTimeout(() => {
