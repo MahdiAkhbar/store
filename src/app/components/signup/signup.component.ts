@@ -23,7 +23,7 @@ export class SignupComponent implements OnInit {
     });
   }
   onSubmit() {
-    let user: User = {...this.signupForm.value};
+    let user: User = { ...this.signupForm.value, isAdmin: false };
     this.usersService.signup(user);
     this.signupForm.reset();
   }
