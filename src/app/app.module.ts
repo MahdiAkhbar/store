@@ -48,7 +48,8 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
     HttpClientModule
   ],
   providers: [
-    { provide: 'API_URL', useValue: 'https://store-shop-2bb1e-default-rtdb.firebaseio.com' }
+    { provide: 'API_URL', useValue: 'https://store-shop-2bb1e-default-rtdb.firebaseio.com' },
+    { provide: 'LOCAL_URL', useValue: 'http://localhost:3000' }
   ],
   bootstrap: [AppComponent]
 })

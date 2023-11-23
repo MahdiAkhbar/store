@@ -88,6 +88,8 @@ export class ProductsComponent implements OnInit {
     this.productService.fetchProducts().subscribe((response) => {
         this.isFetching = false;
         this.products = response;
+        console.log(response);
+        console.log(this.products);
       });
     }
   sortPar(value: string) {

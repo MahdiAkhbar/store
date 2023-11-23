@@ -13,7 +13,7 @@ export class UsersService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    @Inject('API_URL') private url:string
+    @Inject('LOCAL_URL') private localUrl:string
     ) {
       this.loggedIn.subscribe(value => this.loginStatus = value);
     }
@@ -24,23 +24,23 @@ export class UsersService {
 
 
   editUser(user: User) {
-    return this.http.patch<User>(this.url + '/users/' + user.id + '.json', user);
+    return this.http.put<User>(this.localUrl + '/users/' + user.id, user);
   }
   getUser() {
-    return this.http.get<User[]>(this.url + '/users.json')
-    .pipe(
-      map((response) => {
-        let userslist = [];
-        for (let key in response) {
-          userslist.push({ ...response[key], id: key });
-        }
-        return userslist;
-      })
-    )
+    return this.http.get<User[]>(this.localUrl + '/users')
+    // .pipe(
+    //   map((response) => {
+    //     let userslist = [];
+    //     for (let key in response) {
+    //       userslist.push({ ...response[key], id: key });
+    //     }
+    //     return userslist;
+    //   })
+    // )
   }
   signup(user: User) {
     this.loggedIn.next(true);
-    this.http.post<User>(this.url + '/users.json', user)
+    this.http.post<User>(this.localUrl + '/users', user)
     .subscribe(() => {
       this.user = user;
       this.router.navigate(['/profile']);

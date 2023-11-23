@@ -1,5 +1,5 @@
 export interface Product {
-    id: string;
+    _id: string;
     imagePath: string;
     name: string;
     available: boolean;

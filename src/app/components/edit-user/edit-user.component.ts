@@ -18,7 +18,7 @@ import { User } from 'src/app/shared/models/user.model';
 export class EditUserComponent {
   constructor(
     private usersService: UsersService,
-    @Inject('API_URL') private url: string,
+    // @Inject('LOCAL_URL') private url: string,
     private r2: Renderer2
   ) {}
 

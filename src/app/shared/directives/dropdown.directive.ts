@@ -1,11 +1,11 @@
-import { AfterViewInit, ContentChild, Directive, ElementRef, HostBinding, HostListener, Renderer2 } from '@angular/core';
+import { AfterViewInit, ContentChild, Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appDropdown]'
 })
 export class DropdownDirective implements AfterViewInit {
 
-  constructor(private r2: Renderer2, private elRef: ElementRef) { }
+  constructor(private r2: Renderer2) { }
 
   toggleColor = false;
 

@@ -10,7 +10,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
   styleUrls: ['./basket.component.css']
 })
 export class BasketComponent implements OnInit {
-  constructor(private ordersService: OrdersService, private productService: ProductService) {}
+  constructor(private ordersService: OrdersService) {}
 
   products: Product[] = [];
   totalPrice: number = 0;
@@ -44,7 +44,7 @@ export class BasketComponent implements OnInit {
 
     this.orders = this.ordersService.getBasketOrders();
     this.orders.forEach((order) => {
-      this.totalPrice += +order.price;
+      this.totalPrice += order.price;
     })
   }
 
@@ -58,15 +58,15 @@ export class BasketComponent implements OnInit {
     let product = this.findIndex(this.orders, order);
     // let product = this.orders[index];
     product.count += 1;
-    this.totalPrice += +order.price
+    this.totalPrice += order.price
   }
   decrease(order: Product) {
-    let index = this.orders.indexOf(<Product>this.orders.find(o => o.id === order.id));
+    let index = this.orders.indexOf(<Product>this.orders.find(o => o._id === order._id));
     this.orders[index].count -= 1;
-    this.totalPrice -= +order.price;
+    this.totalPrice -= order.price;
   }
   findIndex(array: Product[], order: Product) {
-    let index = array.indexOf(<Product>this.orders.find(o => o.id === order.id));
+    let index = array.indexOf(<Product>this.orders.find(o => o._id === order._id));
     let product = array[index];
     return product;
   }

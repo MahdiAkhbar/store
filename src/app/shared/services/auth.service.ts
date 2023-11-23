@@ -10,7 +10,7 @@ import { UsersService } from './users.service';
 export class AuthService implements OnInit{
   constructor(
     private router: Router,
-    @Inject('API_URL') private url: string,
+    @Inject('LOCAL_URL') private localUrl: string,
     private usersService: UsersService) { }
   
   isLoggedIn: boolean = false;
@@ -23,7 +23,7 @@ export class AuthService implements OnInit{
   isAdmin() {
     const user = this.usersService.user;
     let promise = new Promise((resolve) => {
-      fetch(this.url + '/users.json')
+      fetch(this.localUrl + '/users')
       .then(response => response.json())
       .then((users) => {
         let usersList = [];
