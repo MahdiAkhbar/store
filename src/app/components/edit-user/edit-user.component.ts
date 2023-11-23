@@ -28,6 +28,7 @@ export class EditUserComponent {
     lastName: '',
     email: '',
     password: '',
+    isAdmin: false
   }
   editedUser!: User;
   @ViewChild('nr', { static: true }) nr!: ElementRef;
