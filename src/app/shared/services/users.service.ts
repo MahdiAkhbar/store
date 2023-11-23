@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Subject, map } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { User } from '../models/user.model';
@@ -27,16 +27,7 @@ export class UsersService {
     return this.http.put<User>(this.localUrl + '/users/' + user.id, user);
   }
   getUser() {
-    return this.http.get<User[]>(this.localUrl + '/users')
-    // .pipe(
-    //   map((response) => {
-    //     let userslist = [];
-    //     for (let key in response) {
-    //       userslist.push({ ...response[key], id: key });
-    //     }
-    //     return userslist;
-    //   })
-    // )
+    return this.http.get<User[]>(this.localUrl + '/users');
   }
   signup(user: User) {
     this.loggedIn.next(true);

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable} from '@angular/core';
+
 import { Product } from '../models/product.model';
-import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,15 +16,6 @@ export class ProductService {
     )
   }
   fetchProducts() {
-    return this.http.get<Product[]>(this.localUrl + '/products' )
-    // .pipe(
-    //   map((response) => {
-    //     const productList: Product[] = [];
-    //     for (let key in response) {
-    //       productList.push({ ...response[key], id: key })
-    //     }
-    //     return productList;
-    //   })
-    // )
+    return this.http.get<Product[]>(this.localUrl + '/products' );
   }
 }

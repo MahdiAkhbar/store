@@ -1,7 +1,6 @@
 import { 
   Component,
   ElementRef,
-  Inject,
   Renderer2,
   ViewChild 
 } from '@angular/core';
@@ -18,7 +17,6 @@ import { User } from 'src/app/shared/models/user.model';
 export class EditUserComponent {
   constructor(
     private usersService: UsersService,
-    // @Inject('LOCAL_URL') private url: string,
     private r2: Renderer2
   ) {}
 
@@ -31,7 +29,7 @@ export class EditUserComponent {
     isAdmin: false
   }
   editedUser!: User;
-  @ViewChild('nr', { static: true }) nr!: ElementRef;
+  @ViewChild('notRegistered', { static: true }) nr!: ElementRef;
 
   onSubmit(form: NgForm) {
     this.editedUser = { ...form.value, id: this.notEditedUser.id };

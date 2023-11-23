@@ -15,33 +15,8 @@ export class BasketComponent implements OnInit {
   products: Product[] = [];
   totalPrice: number = 0;
   orders: Product[] = [];
-  // orders: Product[] = [
-  //   {
-  //     name: 'test1',
-  //     available: true,
-  //     imagePath: 'https://cdn.aboutstatic.com/file/b11e9ecd767b1364b095175d6b9e8d0e?bg=F4F4F5&quality=75&trim=1&height=480&width=360',
-  //     price: 99
-  //   },
-  //   {
-  //     name: 'test2',
-  //     available: true,
-  //     imagePath: 'https://cdn.aboutstatic.com/file/b11e9ecd767b1364b095175d6b9e8d0e?bg=F4F4F5&quality=75&trim=1&height=480&width=360',
-  //     price: 99
-  //   },
-  //   {
-  //     name: 'test3',
-  //     available: true,
-  //     imagePath: 'https://cdn.aboutstatic.com/file/b11e9ecd767b1364b095175d6b9e8d0e?bg=F4F4F5&quality=75&trim=1&height=480&width=360',
-  //     price: 99
-  //   }
-  // ];
 
   ngOnInit(): void {
-    // this.productService.fetchProducts()
-    // .subscribe((products) => {
-    //   this.products = products;
-    // });
-
     this.orders = this.ordersService.getBasketOrders();
     this.orders.forEach((order) => {
       this.totalPrice += order.price * order.count;
@@ -54,9 +29,7 @@ export class BasketComponent implements OnInit {
   }
 
   increase(order: Product) {
-    // let index = this.orders.indexOf(<Product>this.orders.find(o => o === order));
     let product = this.findIndex(this.orders, order);
-    // let product = this.orders[index];
     product.count += 1;
     this.totalPrice += order.price
   }
