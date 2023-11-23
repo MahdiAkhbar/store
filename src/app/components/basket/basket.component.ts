@@ -44,13 +44,13 @@ export class BasketComponent implements OnInit {
 
     this.orders = this.ordersService.getBasketOrders();
     this.orders.forEach((order) => {
-      this.totalPrice += order.price;
+      this.totalPrice += order.price * order.count;
     })
   }
 
   remove(order: Product) {
     this.ordersService.removeFromBasket(order);
-    this.totalPrice -= order.price;
+    this.totalPrice -= order.price * order.count;
   }
 
   increase(order: Product) {
