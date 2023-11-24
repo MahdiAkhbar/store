@@ -25,12 +25,12 @@ export class AuthService implements OnInit{
     let promise = new Promise((resolve) => {
       fetch(this.localUrl + '/users')
       .then(response => response.json())
-      .then((users) => {
-        let usersList = [];
-        for (let key in users)
-          usersList.push(users[key]);
-        return usersList;
-      })
+      // .then((users) => {
+      //   let usersList = [];
+      //   for (let key in users)
+      //     usersList.push(users[key]);
+      //   return usersList;
+      // })
       .then((users: User[]) => {
         let loginUser = users.find(u => u.name === user.name && u.password === user.password);
         if (loginUser)
