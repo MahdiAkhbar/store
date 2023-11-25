@@ -5,12 +5,12 @@ import {
   RouterStateSnapshot,
   UrlTree
 } from '@angular/router';
-import { Injectable, inject } from '@angular/core';
+import { Inject, Injectable, inject } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 
 @Injectable({ providedIn: 'root'})
 class AdminGaurd {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(@Inject(AuthService) private authService: AuthService, private router: Router) {}
   
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Promise<boolean | UrlTree> {
     return this.authService.isAdmin()
