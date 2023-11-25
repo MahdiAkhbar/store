@@ -32,18 +32,19 @@ export class EditUserComponent {
   @ViewChild('notRegistered', { static: true }) nr!: ElementRef;
 
   onSubmit(form: NgForm) {
-    this.editedUser = { ...form.value, id: this.notEditedUser.id };
+    this.editedUser = { ...form.value };
     this.usersService.editUser(this.editedUser)
-    .subscribe(() => {
-      console.log('User', this.editedUser, 'successfully edited!');
+    .subscribe((response) => {
+      console.log(response);
       form.reset();
     })
   }
   
   fetchUser(email: string) {
-    this.usersService.getUser()
-    .subscribe((users) => {
-      let user =  users.find(u => u.email === email);
+    this.usersService.getOneUser(email)
+    .then(value => value.json())
+    .then((value) => {
+      let user = value;
       if (user) {
         this.notEditedUser = user;
         this.r2.addClass(this.nr.nativeElement, 'not-registerd')
