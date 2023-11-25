@@ -24,11 +24,16 @@ export class UsersService {
 
 
   editUser(user: User) {
-    return this.http.put<User>(this.localUrl + '/users/' + user.id, user);
+    return this.http.put(this.localUrl + '/users/' + user.email, user, { responseType: 'text' });
   }
-  getUser() {
+  getUsers() {
     return this.http.get<User[]>(this.localUrl + '/users');
   }
+
+  getOneUser(email: string) {
+    return fetch('http://localhost:3000/users/' + email)
+  }
+
   signup(user: User) {
     this.loggedIn.next(true);
     this.http.post<User>(this.localUrl + '/users', user)
