@@ -22,7 +22,7 @@
                         name="name"
                         [ngModel]="notEditedUser.name"
                         required
-                        disabled>
+                        readonly>
                 </div>
                 <div class="form-gorup mb=3">
                     <label for="lastname">Last Name</label>
@@ -30,10 +30,10 @@
                         type="text" 
                         id="lastname" 
                         class="form-control"
-                        name="name"
+                        name="lastName"
                         [ngModel]="notEditedUser.lastName"
                         required
-                        disabled>
+                        readonly>
                 </div>
                 <div class="form-gorup mb=3">
                     <label for="email">Email</label>
@@ -44,7 +44,7 @@
                         name="email"
                         [ngModel]="notEditedUser.email"
                         required
-                        disabled>
+                        readonly>
                 </div>
                 <div class="form-gorup mb-3">
                     <label for="password">Password</label>
@@ -55,7 +55,7 @@
                         name="password"
                         [ngModel]="notEditedUser.password"
                         required
-                        disabled>
+                        readonly>
                 </div>
                 <div class="form-check mb-3">
                     <input 
