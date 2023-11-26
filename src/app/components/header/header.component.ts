@@ -12,10 +12,10 @@ export class HeaderComponent implements OnInit {
 
   basketIsEmpty: boolean = true;
   whishlistIsEmpty: boolean = true;
-  loggedIn: boolean = false;
+  loggedIn: boolean = false || JSON.parse(<string>localStorage.getItem('loginStatus'));
 
   ngOnInit(): void {
-    this.usersService.loggedIn.subscribe(value => this.loggedIn = value);
+    this.usersService.loggedIn.subscribe((value) => this.loggedIn = value);
     this.ordersService.basketIsEmpty.subscribe(value => this.basketIsEmpty = value);
     this.ordersService.whishlistIsEmpty.subscribe(value => this.whishlistIsEmpty = value);
   }

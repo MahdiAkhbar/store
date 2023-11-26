@@ -3,6 +3,7 @@ import { OrdersService } from 'src/app/shared/services/orders.service';
 
 import { Product } from 'src/app/shared/models/product.model';
 import { ProductService } from 'src/app/shared/services/product.service';
+import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
   selector: 'app-basket',
@@ -10,13 +11,15 @@ import { ProductService } from 'src/app/shared/services/product.service';
   styleUrls: ['./basket.component.css']
 })
 export class BasketComponent implements OnInit {
-  constructor(private ordersService: OrdersService) {}
+  constructor(private ordersService: OrdersService, private usersService: UsersService) {}
 
   products: Product[] = [];
   totalPrice: number = 0;
   orders: Product[] = [];
+  loginStatus: boolean = false;
 
   ngOnInit(): void {
+    this.loginStatus = this.usersService.getLoginStatus();
     this.orders = this.ordersService.getBasketOrders();
     this.orders.forEach((order) => {
       this.totalPrice += order.price * order.count;

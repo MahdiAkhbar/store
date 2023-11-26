@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   }
   onSubmit() {
     this.r2.addClass(this.failLogin.nativeElement, 'normal');
-    let user: User = {...this.loginForm.value};
+    let user: User = this.loginForm.value;
 
     this.usersService.getUsers().subscribe((users) => {
       let loginuser = users.find(u => u.email === user.email && u.password === user.password);

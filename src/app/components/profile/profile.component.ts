@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   loginStatus: boolean = false;
 
   ngOnInit(): void {
-    this.loggedInUser = this.usersService.user;
+    this.loggedInUser = JSON.parse(<string>localStorage.getItem('user'));
     this.loginStatus = this.usersService.getLoginStatus();
   }
   logout() {
