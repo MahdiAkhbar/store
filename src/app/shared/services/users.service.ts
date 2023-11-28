@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, map } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { User } from '../models/user.model';
@@ -32,7 +32,10 @@ export class UsersService {
   }
 
   getOneUser(email: string) {
-    return fetch('http://localhost:3000/users/' + email)
+    return this.http.get('http://localhost:3000/users/' + email, { responseType: 'text' })
+    .pipe(map((value) => {
+      return JSON.parse(value);
+    }))
   }
 
   signup(user: User) {

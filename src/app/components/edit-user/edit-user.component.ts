@@ -42,9 +42,7 @@ export class EditUserComponent {
   
   fetchUser(email: string) {
     this.usersService.getOneUser(email)
-    .then(value => value.json())
-    .then((value) => {
-      let user = value;
+    .subscribe((user) => {
       if (user) {
         this.notEditedUser = user;
         this.r2.addClass(this.nr.nativeElement, 'not-registerd')
