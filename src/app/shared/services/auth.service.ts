@@ -21,7 +21,7 @@ export class AuthService implements OnInit{
     })
   }
   isAdmin() {
-    const user = this.usersService.user;
+    const user = JSON.parse(<string>localStorage.getItem('user'));
     let promise = new Promise((resolve) => {
       fetch(this.localUrl + '/users')
       .then(response => response.json())
