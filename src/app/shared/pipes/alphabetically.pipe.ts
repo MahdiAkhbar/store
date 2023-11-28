@@ -1,15 +1,24 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Product } from '../models/product.model';
 
 @Pipe({
   name: 'alphabetically'
 })
 export class AlphabeticallyPipe implements PipeTransform {
 
-  transform(value: any, arg: boolean | string): any {
-    if (arg === '' || !arg === true)
+  transform(value: Product[], arg: boolean | string): any {
+    let list = [];
+    if (arg === '')
       return value;
-    else
-      return value.reverse();
-  }
+    else {
+      list = value.sort((a, b) => {
+        if (a.name.toLowerCase() < b.name.toLowerCase())
+          return 1
+        else
+          return -1
+      })
+      return arg ? list.reverse() : list;
+    }
+    }
 
 }
