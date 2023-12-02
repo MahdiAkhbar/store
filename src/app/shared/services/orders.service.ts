@@ -7,7 +7,15 @@ import { Subject } from 'rxjs';
 })
 export class OrdersService {
 
-  constructor() { }
+  constructor() {
+    let localStorageWhishList: Product[] | undefined = JSON.parse(<string>localStorage.getItem('whishList'));
+    if (localStorageWhishList) {
+      console.log('hi');
+      
+      this.whishList = JSON.parse(<string>localStorage.getItem('whishList'));
+      this.whishlistIsEmpty.next(false);
+    }
+  }
 
   basketList: Product[] = [];
   whishList:  Product[] = [];
@@ -32,11 +40,13 @@ export class OrdersService {
   addToWhishlist(order: Product) {
     if (!this.whishList.includes(order)) {
       this.whishList.push(order);
+      localStorage.setItem('whishList', JSON.stringify(this.whishList));
     }
     this.whishlistIsEmpty.next(false);
   }
   removeFromWhishlist(order: Product) {
     this.whishList.splice(this.whishList.indexOf(order), 1);
+    localStorage.setItem('whishList', JSON.stringify(this.whishList));
     if (this.whishList.length < 1)
       this.whishlistIsEmpty.next(true);
   } 
