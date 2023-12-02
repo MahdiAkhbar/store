@@ -15,6 +15,9 @@ export class HeaderComponent implements OnInit {
   loggedIn: boolean = false || JSON.parse(<string>localStorage.getItem('loginStatus'));
 
   ngOnInit(): void {
+    let whishList = this.ordersService.getWhishlistOrders();
+    if(whishList.length > 0)
+      this.whishlistIsEmpty = false;
     this.usersService.loggedIn.subscribe((value) => this.loggedIn = value);
     this.ordersService.basketIsEmpty.subscribe(value => this.basketIsEmpty = value);
     this.ordersService.whishlistIsEmpty.subscribe(value => this.whishlistIsEmpty = value);
