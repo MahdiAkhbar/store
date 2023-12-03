@@ -10,10 +10,7 @@ export class OrdersService {
   constructor() {
     let localStorageWhishList: Product[] | undefined = JSON.parse(<string>localStorage.getItem('whishList'));
     if (localStorageWhishList) {
-      console.log('hi');
-      
       this.whishList = JSON.parse(<string>localStorage.getItem('whishList'));
-      this.whishlistIsEmpty.next(false);
     }
   }
 
@@ -38,14 +35,19 @@ export class OrdersService {
       this.basketIsEmpty.next(true);
   }
   addToWhishlist(order: Product) {
-    if (!this.whishList.includes(order)) {
-      this.whishList.push(order);
-      localStorage.setItem('whishList', JSON.stringify(this.whishList));
-    }
+    this.whishList.push(order);
+    localStorage.setItem('whishList', JSON.stringify(this.whishList));
     this.whishlistIsEmpty.next(false);
   }
   removeFromWhishlist(order: Product) {
-    this.whishList.splice(this.whishList.indexOf(order), 1);
+    let index;
+    for (let item of this.whishList) {
+      if (item._id === order._id) {
+        index = this.whishList.indexOf(item);
+        this.whishList.splice(index, 1);
+        break;
+      }
+    }
     localStorage.setItem('whishList', JSON.stringify(this.whishList));
     if (this.whishList.length < 1)
       this.whishlistIsEmpty.next(true);
