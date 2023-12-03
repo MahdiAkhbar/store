@@ -9,25 +9,14 @@ import { Product } from 'src/app/shared/models/product.model';
   styleUrls: ['./product-item.component.css']
 })
 export class ProductItemComponent implements OnInit {
-  constructor(private ordersService: OrdersService) {
-    
-    // let localStorageWhishList: Product[] | undefined = JSON.parse(<string>localStorage.getItem('whishList'));
-    // if (localStorageWhishList) {
-    //   console.log(localStorageWhishList);
-      
-    //   if (localStorageWhishList.includes(this.product))
-    //     console.log('hiii');
-        
-    //     // this.isFavorite = true;
-    // }
-  }
+  constructor(private ordersService: OrdersService) {}
 
   @Input() product!: Product;
   isFavorite: boolean = false;
 
   ngOnInit(): void {
     let prod = this.product;
-    let localStorageWhishList: Product[] | undefined = JSON.parse(<string>localStorage.getItem('whishList'));
+    let localStorageWhishList: Product[] | null = JSON.parse(<string>localStorage.getItem('whishList'));
     if (localStorageWhishList) {
       for (let item of localStorageWhishList) {
         if (item._id === prod._id) {
