@@ -16,8 +16,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     let whishList = this.ordersService.getWhishlistOrders();
-    if(whishList.length > 0)
+    if (whishList.length > 0)
       this.whishlistIsEmpty = false;
+    if (this.ordersService.basketList.length > 0)
+      this.basketIsEmpty = false;
     this.usersService.loggedIn.subscribe((value) => this.loggedIn = value);
     this.ordersService.basketIsEmpty.subscribe(value => this.basketIsEmpty = value);
     this.ordersService.whishlistIsEmpty.subscribe(value => this.whishlistIsEmpty = value);

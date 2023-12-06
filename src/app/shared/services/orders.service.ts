@@ -9,9 +9,12 @@ export class OrdersService {
 
   constructor() {
     let localStorageWhishList: Product[] | undefined = JSON.parse(<string>localStorage.getItem('whishList'));
+    let localStorageBasketList: Product[] | null = JSON.parse(<string>localStorage.getItem('basketList'));
     if (localStorageWhishList) {
       this.whishList = JSON.parse(<string>localStorage.getItem('whishList'));
     }
+    if (localStorageBasketList)
+      this.basketList = localStorageBasketList
   }
 
   basketList: Product[] = [];
@@ -20,14 +23,16 @@ export class OrdersService {
   whishlistIsEmpty = new Subject<boolean>();
 
   addToBasket(order: Product) {
-    if (this.basketList.includes(order)) {
-      let index = this.basketList.indexOf(order);
-      this.basketList[index].count += 1;
-    }
-    else {
-      this.basketList.push(order);
-    }
-    this.basketIsEmpty.next(false);
+      const existingOrder = this.basketList.find(item => item._id === order._id);
+      if(existingOrder) {
+        let index = this.basketList.indexOf(existingOrder);
+        this.basketList[index].count += 1;
+      }
+      else {
+        this.basketList.push(order);
+      }
+      localStorage.setItem('basketList', JSON.stringify(this.basketList));
+      this.basketIsEmpty.next(false);
   }
   removeFromBasket(order: Product) {
     this.basketList.splice(this.basketList.indexOf(order), 1);
