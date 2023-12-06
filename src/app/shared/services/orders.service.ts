@@ -38,6 +38,7 @@ export class OrdersService {
     this.basketList.splice(this.basketList.indexOf(order), 1);
     if (this.basketList.length < 1)
       this.basketIsEmpty.next(true);
+    localStorage.setItem('basketList', JSON.stringify(this.basketList));
   }
   addToWhishlist(order: Product) {
     this.whishList.push(order);
