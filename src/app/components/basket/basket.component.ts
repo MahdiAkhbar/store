@@ -32,18 +32,23 @@ export class BasketComponent implements OnInit {
   }
 
   increase(order: Product) {
-    let product = this.findIndex(this.orders, order);
-    product.count += 1;
+    // let product = this.findIndex(this.orders, order);
+    // product.count += 1;
+    // this.totalPrice += order.price
+    let index = this.findIndex(this.orders, order);
+    this.orders[index].count += 1;
     this.totalPrice += order.price
+    localStorage.setItem('basketList', JSON.stringify(this.orders));
   }
   decrease(order: Product) {
     let index = this.orders.indexOf(<Product>this.orders.find(o => o._id === order._id));
     this.orders[index].count -= 1;
     this.totalPrice -= order.price;
+    localStorage.setItem('basketList', JSON.stringify(this.orders));
   }
   findIndex(array: Product[], order: Product) {
     let index = array.indexOf(<Product>this.orders.find(o => o._id === order._id));
     let product = array[index];
-    return product;
+    return index;
   }
 }
