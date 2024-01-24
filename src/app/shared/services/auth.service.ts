@@ -7,12 +7,12 @@ import { UsersService } from './users.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements OnInit{
+export class AuthService implements OnInit {
   constructor(
     private router: Router,
     @Inject('LOCAL_URL') private localUrl: string,
     private usersService: UsersService) { }
-  
+
   isLoggedIn: boolean = false;
 
   ngOnInit(): void {
@@ -21,17 +21,9 @@ export class AuthService implements OnInit{
     })
   }
   isAdmin() {
-    const user = JSON.parse(<string>localStorage.getItem('user'));
+    const user: User = JSON.parse(<string>localStorage.getItem('user'));
     let promise = new Promise((resolve) => {
-      fetch(this.localUrl + '/users')
-      .then(response => response.json())
-      .then((users: User[]) => {
-        let loginUser = users.find(u => u.name === user.name && u.password === user.password);
-        if (loginUser)
-          resolve(loginUser.isAdmin);
-        else
-          this.router.navigate(['/']);
-      })
+      resolve(user.isAdmin);
     })
     return promise;
   }
