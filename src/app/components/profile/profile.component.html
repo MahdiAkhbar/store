@@ -1,47 +1,86 @@
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12 mb-3">
-            <div class="display-flex">
-                <button [routerLink]="['/addproduct']" class="btn btn-primary me-3">Create product</button>
-                <button [routerLink]="['/edituser']" class="btn btn-primary">Eddit User</button>
-            </div>
-        </div>
-        <hr>
+  <div class="row" *ngIf="loggedInUser.isAdmin">
+    <div class="col-xs-12 mb-3">
+      <div class="display-flex">
+        <button [routerLink]="['/addproduct']" class="btn btn-primary me-3">
+          Create product
+        </button>
+        <button [routerLink]="['/edituser']" class="btn btn-primary">
+          Eddit User
+        </button>
+      </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <div class="list-group">
-                <div class="list-group-item">
-                    <label for="user-name">Name :</label>
-                    <input class="user-info" type="text" name="name" id="user-name" [value]="loggedInUser.name">
-                </div>
-                <div class="list-group-item">
-                    <label for="user-lastName">Last Name :</label>
-                    <input class="user-info" type="text" name="user_lastName" id="user-lastName" [value]="loggedInUser.lastName">
-                </div>
-                <div class="list-group-item">
-                    <label for="user-lastName">Email :</label>
-                    <input class="user-info" type="text" name="user_lastName" id="user-lastName" [value]="loggedInUser.email">
-                </div>
-                <div class="list-group-item">
-                    <label for="user-lastName">Password :</label>
-                    <input class="user-info" type="text" name="user_lastName" id="user-lastName" [value]="loggedInUser.password">
-                </div>
-                <div class="list-group-item">
-                    <label for="user-lastName">Role :</label>
-                    <input class="user-info" type="text" name="user_lastName" id="user-lastName" [value]="loggedInUser.isAdmin ? 'Admin' : 'User'">
-                </div>
-            </div>
+    <hr />
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="list-group">
+        <div class="list-group-item">
+          <label for="user-name">Name :</label>
+          <input
+            class="user-info"
+            type="text"
+            name="name"
+            id="user-name"
+            [value]="loggedInUser.name"
+          />
         </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col">
-            <button 
-                type="button" 
-                class="btn btn-outline-danger"
-                (click)="logout()">Logout
-            </button>
+        <div class="list-group-item">
+          <label for="user-lastName">Last Name :</label>
+          <input
+            class="user-info"
+            type="text"
+            name="user_lastName"
+            id="user-lastName"
+            [value]="loggedInUser.lastName"
+          />
         </div>
+        <div class="list-group-item">
+          <label for="user-lastName">Email :</label>
+          <input
+            class="user-info"
+            type="text"
+            name="user_lastName"
+            id="user-lastName"
+            [value]="loggedInUser.email"
+          />
+        </div>
+        <div class="list-group-item">
+          <label for="user-lastName">Password :</label>
+          <input
+            class="user-info"
+            type="password"
+            name="user_lastName"
+            id="user-lastName"
+            [value]="loggedInUser.password"
+          />
+        </div>
+        <div class="list-group-item">
+          <label for="user-lastName">Role :</label>
+          <input
+            class="user-info"
+            type="text"
+            name="user_lastName"
+            id="user-lastName"
+            [value]="loggedInUser.isAdmin ? 'Admin' : 'User'"
+          />
+        </div>
+      </div>
     </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col display-flex">
+      <button
+        type="button"
+        class="btn btn-outline-danger me-3"
+        (click)="logout()"
+      >
+        Logout
+      </button>
+      <button [routerLink]="['/changeinfo']" class="btn btn-primary">
+        Edit
+      </button>
+    </div>
+  </div>
 </div>
