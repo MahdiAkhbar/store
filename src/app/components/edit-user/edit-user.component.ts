@@ -1,8 +1,8 @@
-import { 
+import {
   Component,
   ElementRef,
   Renderer2,
-  ViewChild 
+  ViewChild
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
@@ -18,8 +18,9 @@ export class EditUserComponent {
   constructor(
     private usersService: UsersService,
     private r2: Renderer2
-  ) {}
+  ) { }
 
+  loggedinUser: User = JSON.parse(<string>localStorage.getItem('user'));
   notEditedUser: User = {
     id: '',
     name: '',
@@ -33,23 +34,25 @@ export class EditUserComponent {
 
   onSubmit(form: NgForm) {
     this.editedUser = { ...form.value };
+    if (this.editedUser.email === this.loggedinUser.email)
+      localStorage.setItem('user', JSON.stringify(this.editedUser));
     this.usersService.editUser(this.editedUser)
-    .subscribe((response) => {
-      console.log(response);
-      form.reset();
-    })
+      .subscribe((response) => {
+        console.log(response);
+        form.reset();
+      })
   }
-  
+
   fetchUser(email: string) {
     this.usersService.getOneUser(email)
-    .subscribe((user) => {
-      if (user) {
-        this.notEditedUser = user;
-        this.r2.addClass(this.nr.nativeElement, 'not-registerd')
-      }
-      else {
-        this.r2.removeClass(this.nr.nativeElement, 'not-registerd');
-      }
-    })
+      .subscribe((user) => {
+        if (user) {
+          this.notEditedUser = user;
+          this.r2.addClass(this.nr.nativeElement, 'not-registerd')
+        }
+        else {
+          this.r2.removeClass(this.nr.nativeElement, 'not-registerd');
+        }
+      })
   }
 }
