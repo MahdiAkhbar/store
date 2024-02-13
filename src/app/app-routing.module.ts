@@ -11,6 +11,7 @@ import { adminGuard } from './shared/guards/admin.guard';
 import { SignupComponent } from './components/signup/signup.component';
 import { authGuard } from './shared/guards/auth.guard';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { ChangeinfoComponent } from './components/changeinfo/changeinfo.component';
 
 const routes: Routes = [
   { path: '', component: ProductsComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'basket', component: BasketComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },
   { path: 'addproduct', component: AddProductFormComponent, canActivate: [authGuard, adminGuard] },
-  { path: 'edituser', component: EditUserComponent, canActivate: [authGuard, adminGuard]},
+  { path: 'edituser', component: EditUserComponent, canActivate: [authGuard, adminGuard] },
+  { path: 'changeinfo', component: ChangeinfoComponent, canActivate: [authGuard] },
   { path: '**', redirectTo: '/' }
 ];
 

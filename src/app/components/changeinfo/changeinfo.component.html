@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <div class="form-gorup mb=3">
+          <label for="name">Username</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            name="name"
+            [ngModel]="loggedinUser.name"
+            required
+          />
+        </div>
+        <div class="form-gorup mb=3">
+          <label for="lastname">Last Name</label>
+          <input
+            type="text"
+            id="lastname"
+            class="form-control"
+            name="lastName"
+            [ngModel]="loggedinUser.lastName"
+            required
+          />
+        </div>
+        <div class="form-gorup mb=3">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            id="email"
+            class="form-control"
+            name="email"
+            [ngModel]="loggedinUser.email"
+            required
+          />
+        </div>
+        <div class="form-gorup mb-3">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            name="password"
+            minlength="6"
+            [ngModel]="loggedinUser.password"
+            required
+          />
+        </div>
+        <div class="form-check mb-3" style="display: none">
+          <input
+            type="checkbox"
+            id="isadmin"
+            class="form-check-input"
+            name="isAdmin"
+            [ngModel]="loggedinUser.isAdmin"
+          />
+          <label for="isadmin">Admin</label>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-primary mb-3"
+          [disabled]="!f.valid"
+        >
+          Save changes
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

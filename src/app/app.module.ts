@@ -20,6 +20,7 @@ import { SearchPipe } from './shared/pipes/search.pipe';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { ChangeinfoComponent } from './components/changeinfo/changeinfo.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
     SearchPipe,
     ProfileComponent,
     SignupComponent,
-    EditUserComponent
+    EditUserComponent,
+    ChangeinfoComponent
   ],
   imports: [
     BrowserModule,
